@@ -5,7 +5,7 @@
 $latest_three_postss = $posts->take(3);
 $four_posts = $posts->take(4);
 @endphp
-
+<div class="btn btn-success"> hello ahmed </div>
  <!-- Top News Start-->
  <div class="top-news">
     <div class="container">
@@ -88,7 +88,7 @@ $four_posts = $posts->take(4);
                 >Popular News</a
               >
             </li>
-           
+
           </ul>
 
           <div class="tab-content">
@@ -132,7 +132,7 @@ $four_posts = $posts->take(4);
                 >Most Read</a
               >
             </li>
-            
+
           </ul>
           <div class="tab-content">
             <div id="m-viewed" class="container tab-pane active">
@@ -181,7 +181,7 @@ $four_posts = $posts->take(4);
                   <a href="{{route('frontend.post.show',$post->slug)}}" title="{{$post->title}}">{{$post->title}}</a>
                 </div>
               </div>
-            </div> 
+            </div>
             @endforeach
             {{$posts->links()}}
 
