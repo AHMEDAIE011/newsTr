@@ -5,7 +5,7 @@
 $latest_three_postss = $posts->take(3);
 $four_posts = $posts->take(4);
 @endphp
-<div class="btn btn-success"> hello ahmed </div>
+<div class="btn btn-success"> hello ahmed ali </div>
  <!-- Top News Start-->
  <div class="top-news">
     <div class="container">
