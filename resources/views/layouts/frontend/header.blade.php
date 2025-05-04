@@ -14,18 +14,14 @@
               <a href="{{route('login')}}">login</a>
               <a href="{{route('register')}}">register</a>
               @endguest
-              
+
               @auth
               <a href="javascript:viod(0)" onclick="if(confirm('Do you want to logout')){document.getElementById('formLogout').submit()} return false">logout</a>
               @endauth
-
-              
-              
-              
               <a href="{{route('frontend.contact.index')}}">Contact</a>
             </div>
             <form action="{{route('logout')}}" method="post" id="formLogout">@csrf</form>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -37,7 +33,7 @@
         <div class="row align-items-center">
           <div class="col-lg-3 col-md-4">
             <div class="b-logo">
-              <a href="index.html">
+              <a href="{{route('frontend.index')}}">
                 <img src="{{asset('assets/frontend').$getSetting->logo}}" alt="Logo" />
               </a>
             </div>
@@ -52,7 +48,7 @@
           <div class="col-lg-3 col-md-4">
            <form action="{{route('frontend.search')}}" method="post">
             @csrf
-          
+
             <div class="b-search">
               <input name="search" type="text" placeholder="Search" />
               <button type="submit"><i class="fa fa-search"></i></button>
@@ -83,7 +79,7 @@
           id="navbarCollapse"
         >
           <div class="navbar-nav mr-auto">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="{{route('frontend.index')}}" class="nav-item nav-link active">Home</a>
             <div class="nav-item dropdown">
               <a
                 href="#"
@@ -95,7 +91,7 @@
                 @foreach ($categories as $category)
                 <a href="{{route('frontend.category.posts',$category->slug)}}" title="{{$category->name}}" class="dropdown-item">{{$category->name}}</a>
                 @endforeach
-               
+
               </div>
             </div>
             <a href="single-page.html" class="nav-item nav-link"
@@ -117,7 +113,7 @@
   </div>
   <!-- Nav Bar End -->
 
-  
+
     <!-- Breadcrumb Start -->
     <div class="breadcrumb-wrap">
       <div class="container">

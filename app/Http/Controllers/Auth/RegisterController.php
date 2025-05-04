@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -57,7 +58,7 @@ class RegisterController extends Controller
             'country' => ['nullable', 'string', 'max:55'],
             'city' => ['nullable', 'string', 'max:55'],
             'street' => ['nullable', 'string', 'max:55'],
-            'image' => ['nullable', ],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048' ,
 
         ]);
     }
@@ -70,7 +71,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -81,5 +82,14 @@ class RegisterController extends Controller
             'street' => $data['street'],
             'image' => $data['image'],
         ]);
+
+        if ($data['image']) {
+            $file = $data['image'];
+            $fileName = Str::slug($user->username).time().'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('uploads/users',$fileName,['disk' => 'uploads']);
+            $user->update(['image' =>  $path]);
+        }
+
+        return $user;
     }
 }

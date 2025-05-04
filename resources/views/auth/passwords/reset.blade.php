@@ -1,4 +1,4 @@
-@extends('layouts.frontend.app')
+j@extends('layouts.frontend.app')
 @section('body')
 
 <div class="container">
@@ -35,7 +35,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+k                                        <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
